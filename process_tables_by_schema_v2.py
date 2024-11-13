@@ -26,7 +26,7 @@ def initialize_spark_session():
     conf_list = [
         ("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions"),
         ("spark.sql.catalog.glue_catalog", "org.apache.iceberg.spark.SparkCatalog"),
-        ("spark.sql.catalog.glue_catalog.warehouse", "s3://mp2appsrvdevshell"),
+        ("spark.sql.catalog.glue_catalog.warehouse", "s3://dev"),
         ("spark.sql.catalog.glue_catalog.catalog-impl", "org.apache.iceberg.aws.glue.GlueCatalog"),
         ("spark.sql.catalog.glue_catalog.io-impl", "org.apache.iceberg.aws.s3.S3FileIO")
     ]
