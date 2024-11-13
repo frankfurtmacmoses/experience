@@ -4,7 +4,7 @@ that have already been processed in the same directory. It uses a configuration 
 to specify the composite primary keys for tables and other configuration parameters.
 
 Author: Frankfurt Ogunfunminiyi
-Email: olawole.ogunfunminiyi@shellenergy.com
+Email: olawole.ogunfunminiyi
 Date: 2023-05-25
 """
 
