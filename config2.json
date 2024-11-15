@@ -1,0 +1,31 @@
+{
+    "catalog": "glue_catalog",
+    "database": "esgdb",
+    "bucket_name": "s3://mp",
+    "topic_dir": "esg",
+    "topic_prefix": "CTGout",
+    "job_properties": {
+      "TempDir": "s3://mp",
+      "JobBookmarksEncryptionMode": "DISABLED",
+      "EnableMetrics": "true",
+      "MaxRetries": "0",
+      "NumberOfWorkers": "10",
+      "WorkerType": "G.1X",
+      "Timeout": "432000",
+      "GlueVersion": "2.0",
+      "MaxCapacity": "10.0",
+      "MaxConcurrentRuns": "10"
+    },
+    "source_directory": {
+      "s3:///esg/inv_2000_small_files/": {
+        "table": "inv_2000_transaction",
+        "keys": ["FileSequence", "FileID"]
+      },
+      "s3://esg/inv_4000_customer_small_files/": {
+        "table": "inv_4000_customer",
+        "keys": ["FileSequence", "FileID"]
+      }
+    },
+    "processed_directory": "s3:///processed/"
+  }
+  
