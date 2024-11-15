@@ -1,0 +1,56 @@
+{
+    "config": {
+      "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+      "tasks.max": 3,
+      "schema.history.internal.consumer.sasl.jaas.config": "software.amazon.msk.auth.iam.IAMLoginModule required",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter.schemas.enable": false,
+      "value.converter.schemas.enable": false,
+      "schema.history.internal.kafka.topic": "internal.dbhistory.ESG",
+      "schema.history.internal.producer.security.protocol": "SASL_SSL",
+      "schema.history.internal.producer.sasl.mechanism": "AWS_MSK_IAM",
+      "database.encrypt": false,
+      "schema.history.internal.consumer.sasl.client.callback.handler.class": "software.amazon.msk.auth.iam.IAMClientCallbackHandler",
+      "database.user": "python_user",
+      "database.names": "ESG",
+      "schema.history.internal.producer.sasl.client.callback.handler.class": "software.amazon.msk.auth.iam.IAMClientCallbackHandler",
+      "database.server.name": "10.93.254.26",
+      "schema.history.internal.kafka.bootstrap.servers": [
+        "b-1.seshybdev.bvj0c2.c20.kafka.us-east-1.amazonaws.com:9098",
+        "b-2.seshybdev.bvj0c2.c20.kafka.us-east-1.amazonaws.com:9098",
+        "b-3.seshybdev.bvj0c2.c20.kafka.us-east-1.amazonaws.com:9098",
+        "b-4.seshybdev.bvj0c2.c20.kafka.us-east-1.amazonaws.com:9098",
+        "b-5.seshybdev.bvj0c2.c20.kafka.us-east-1.amazonaws.com:9098",
+        "b-6.seshybdev.bvj0c2.c20.kafka.us-east-1.amazonaws.com:9098"
+      ],
+      "database.port": 1433,
+      "database.hostname": ,
+      "database.password": "",
+      "schema.history.internal.consumer.sasl.mechanism": "AWS_MSK_IAM",
+      "schema.history.internal.producer.sasl.jaas.config": "software.amazon.msk.auth.iam.IAMLoginModule required",
+      "schema.history.internal.consumer.security.protocol": "SASL_SSL",
+      "topic.prefix": "tpc",
+      "auto.create.topics.enable": true,
+      "topic.creation.default.replication.factor": 2,
+      "topic.creation.default.partitions": 20,
+      "schema.include.list"
+      "table.include.list": "file:tablelist.txt",
+      "transforms": {
+        "unwrap.drop.tombstones": true,
+        "unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "createCompositeKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+        "createCompositeKey.fields": [
+          "FileID",
+          "FileSequence"
+        ],
+        "unwrap.delete.handling.mode": "drop"
+      },
+      "include.schema.changes": false,
+      "delete.retention.ms": 86400000,
+      "retention.ms": 2678400000,
+      "retention.bytes": 107374182400,
+      "cleanup.policy": "compact"
+    }
+}
+  
