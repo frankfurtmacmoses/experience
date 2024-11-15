@@ -1,0 +1,41 @@
+
+#Author: Frankfurt Ogunfunminiyi
+#frankfurt.ogunfunminiyi@.com
+#Date: 2024-04-01
+#Version: 1.0.1
+
+# Note: topic.dir = This should be the name of the database
+
+
+#General Kafka Connect settings
+connector.class=io.confluent.connect.s3.S3SinkConnector
+behavior.on.null.values=ignore
+errors.log.include.messages=true
+tasks.max=20
+errors.log.enable=true
+
+#S3 settings 
+s3.region=us-east-1
+#### rotate.schedule.interval.ms=120000  activating this will delay flushing and automatically disable exacltly once delivery of data
+s3.bucket.name=mp2appsrvdevshell
+s3.compression.level=6
+s3.part.size=52428800
+rotate.interval.ms=120000
+s3.credentials.provider.class=com.amazonaws.auth.DefaultAWSCredentialsProviderChain
+format.class=io.confluent.connect.s3.format.json.JsonFormat
+s3.compression.type=gzip
+storage.class=io.confluent.connect.s3.storage.S3Storage
+
+#Topic settings 
+topics=tpc.ESG.CTG.USG_6100_IDRQuantity,tpc.ESG.CTGout.INV_4000_Customer,tpc.ESG.CTGout.GAA_4000_Customer
+topics.dir=esg 
+flush.size=100
+auto.register.schemas=false
+timezone=America/New_York
+key.converter=org.apache.kafka.connect.json.JsonConverter
+value.converter=org.apache.kafka.connect.json.JsonConverter
+key.converter.schemas.enable=false
+value.converter.schemas.enable=false
+schema.compatibility=NONE
+partitioner.class=io.confluent.connect.storage.partitioner.DefaultPartitioner
+
